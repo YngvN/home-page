@@ -10,27 +10,45 @@
     <title>Home</title>
 </head>
 
-<body>
-    <header class="header-main">
+<body class="body-index">
+    <div class="loading">
+        <span>Y</span>
+        <span>N</span>
+    </div>
+    <header class="hide">
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="coding.html">Programming</a></li>
-                <li><a href="music.html">Music</a></li>
+                <div>
+                    <li class="btn-dropdown">Projects</li>
+                    <div class="container-nav-dropdown">
+                        <li><a href="coding.html">Programming</a></li>
+                        <li><a href="music.html">Music</a></li>
+                    </div>
+                </div>
+                <!-- <li><a href="contact.html">Contact</a></li> -->
             </ul>
         </nav>
     </header>
-    <h3>Home</h3>
-    <main class="main-index">
-        <div class="container">
-            <div class="child"></div>
-        </div>
 
+    <main>
+        <div class="container container-name">
+            <h1 class="name">Yngve Nykås</h1>
+            <h2 class="title">Front-end developer and musician</h2>
+        </div>
+        <div class="container hide">
+            <div class="child">
+                <p>As a guy from Norway, I like things to look simple and cold, with a hint of flamboyance.</p><p> I'm still learning and this will display my progress</p>
+            </div>
+        </div>
     </main>
 
-    <footer class="footer-main">
-        <p>Copyright © 2023 COMPANY-NAME | All Rights Reserved</p>
+    <footer class="hide">
+        <button class="btn-lightdark"><i class="fa-regular fa-lightbulb light"></i><i class="fa-solid fa-lightbulb dark"></i></button>
     </footer>
+
+    <script src="/js/index.js" type="module"></script>
+    <script src="/js/utility.js" type="module"></script>
 
 </body>
 
