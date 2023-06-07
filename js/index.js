@@ -1,19 +1,21 @@
-import { showLoadingIndicator } from "./utility.js";
-import { hideLoadingIndicator } from "./utility.js";
+import { showLoadingIndicator, hideLoadingIndicator } from "./utility.js";
 
 const name = document.querySelector(".name");
 const title = document.querySelector(".title");
 const nameContainer = document.querySelector(".container-name");
 
+
+
 showLoadingIndicator(false);
 
 setTimeout(() => {
-    showLoadingIndicator(true);
     displayName();
-}, 3000);
+}, 2000);
 
 
 function displayName() {
+
+    showLoadingIndicator(true);
 
     setTimeout(() => {
         name.style.opacity = "1";
@@ -26,17 +28,17 @@ function displayName() {
     setTimeout(() => {
         title.style.opacity = "0";
         name.style.opacity = "0";
-    }, 4000);    
+    }, 3000);    
     
     setTimeout(() => {
         nameContainer.style.position = "absolute";
         nameContainer.style.right = "2em";
         nameContainer.style.bottom = "2em";
         name.style.opacity = "1";
-        title.style.opacity = "1";
-        showLoadingIndicator(true);
+        title.style.display = "none";
+
         displayAll();
-    }, 4500);
+    }, 4000);
 }
 
 
@@ -50,4 +52,22 @@ function displayAll() {
     }, 1000);
   });
 
+}
+
+function setSessionStorageValue() {
+  sessionStorage.setItem("loadingIndicator", "true");
+}
+
+function checkAndDisplayAll() {
+  const hasViewedIndex = sessionStorage.getItem("loadingIndicator");
+
+  if (hasViewedIndex === "true") {
+    displayAll();
+  }
+  else{
+    setTimeout(() => {
+        showLoadingIndicator(true);
+        displayName();
+    }, 3000);
+  }
 }

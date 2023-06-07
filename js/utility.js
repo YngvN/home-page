@@ -1,10 +1,18 @@
 const loadingIndicator = document.querySelector(".loading");
 const loadingLetters = loadingIndicator.querySelectorAll("span");
 
+const lightButton = document.querySelector(".btn-lightdark");
+const html = document.documentElement;
+
+
+
 let doneLoading = false;
 
-    loadingIndicator.style.opacity = "1";
-    loadingIndicator.style.left = "50%";
+loadingIndicator.style.opacity = "1";
+loadingIndicator.style.left = "50%";
+
+
+
 export function showLoadingIndicator(doneLoading) {
 
 
@@ -23,7 +31,7 @@ export function showLoadingIndicator(doneLoading) {
       setTimeout(() => {
         loadingLetters[index].style.animation = "none";
         spinSpan(index + 1);
-      }, 2000); 
+      }, 1000); 
     }
   }
 
@@ -52,5 +60,17 @@ export function hideLoadingIndicator() {
 }
 
 
+function toggleColorScheme() {
+  console.log("test");
+  const html = document.documentElement;
+
+  if (html.style.colorScheme === "light") {
+    html.style.colorScheme = "dark";
+  } else {
+    html.style.colorScheme = "light";
+  }
+}
+
+lightButton.addEventListener("click", toggleColorScheme)
 
 
