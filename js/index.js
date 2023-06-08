@@ -1,16 +1,8 @@
-import { showLoadingIndicator, hideLoadingIndicator } from "./utility.js";
+import { showLoadingIndicator, hideLoadingIndicator, displayAll } from "./utility.js";
 
 const name = document.querySelector(".name");
 const title = document.querySelector(".title");
 const nameContainer = document.querySelector(".container-name");
-
-
-
-showLoadingIndicator(false);
-
-setTimeout(() => {
-    displayName();
-}, 2000);
 
 
 function displayName() {
@@ -31,43 +23,34 @@ function displayName() {
     }, 3000);    
     
     setTimeout(() => {
-        nameContainer.style.position = "absolute";
-        nameContainer.style.right = "2em";
-        nameContainer.style.bottom = "2em";
-        name.style.opacity = "1";
-        title.style.display = "none";
 
         displayAll();
     }, 4000);
 }
 
 
-function displayAll() {
-  const hiddenObjects = document.querySelectorAll(".hide");
-  console.log(hiddenObjects);
-  hiddenObjects.forEach((object) => {
-    object.style.display = "block";
-        setTimeout(() => {
-        object.style.opacity = "1";
-    }, 1000);
-  });
+// HUSK Å SLETT
+// sessionStorage.setItem("viewedBefore", "false");
 
-}
 
-function setSessionStorageValue() {
-  sessionStorage.setItem("loadingIndicator", "true");
-}
-
+// Checks if the index has been viewed before, and skips the first animation in that case
 function checkAndDisplayAll() {
-  const hasViewedIndex = sessionStorage.getItem("loadingIndicator");
+  const hasViewedIndex = sessionStorage.getItem("viewedBefore");
 
   if (hasViewedIndex === "true") {
+    showLoadingIndicator(true);
     displayAll();
   }
   else{
+
+    showLoadingIndicator(false);
+
     setTimeout(() => {
-        showLoadingIndicator(true);
         displayName();
     }, 3000);
+
+    sessionStorage.setItem("viewedBefore", "true");
   }
 }
+
+checkAndDisplayAll();

@@ -7,39 +7,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/bb746328b1.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/style.css">
-    <title>Home</title>
+    <title>Coding</title>
 </head>
 
-<body>
-    <header class="header-main">
+<body class="body-index">
+    <div class="loading">
+        <span>Y</span>
+        <span>N</span>
+    </div>
+    <header class="hide">
+        <button class="btn-lightdark"><i class="fa-regular fa-lightbulb light"></i><i
+                class="fa-solid fa-lightbulb dark"></i></button>
+
+        <div class="container-hamburger"><button class="btn-hamburger"></button></div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <div>
-                    <button>Projects</button>
-                    <div>
-                        <li><a href="coding.html">Programming</a></li>
-                        <li><a href="music.html">Music</a></li>
-                    </div>
-                </div>
+                <!-- <div> -->
+                <!-- <li class="btn-dropdown">Projects</li> -->
+                <!-- <div class="container-nav-dropdown"> -->
+                <li class="active"><a href="coding.html">Programming</a></li>
+                <li><a href="music.html">Music</a></li>
+                <!-- </div>
+                </div> -->
+                <!-- <li><a href="contact.html">Contact</a></li> -->
             </ul>
         </nav>
     </header>
-    <h3>Coding</h3>
+
     <main class="main-coding">
 
-    <a href="https://charming-kataifi-bd9bdc.netlify.app/">Game store</a>
-    <a href="https://lambent-taffy-8f549a.netlify.app/index.html">Travel-blog</a>
-    <a href="https://melodic-beignet-263e2e.netlify.app/">Museum</a>
         <div class="container">
+            <p>Some of my projects through school</p>
             <div class="child"><a href="https://github.com/YngvN">My GitHub</a></div>
-        </div>
+
+        <div class="list">
+            <div class="child"><a href="https://charming-kataifi-bd9bdc.netlify.app/">Game store</a></div>
+            <div class="child"><a href="https://lambent-taffy-8f549a.netlify.app/index.html">Travel-blog</a></div>
+            <div class="child"><a href="https://melodic-beignet-263e2e.netlify.app/">Museum</a></div>
+        </div>     
+
     </main>
 
-    <footer class="footer-main">
-        <p>Copyright © 2023 COMPANY-NAME | All Rights Reserved</p>
+
+    <footer>
+        <div class="footer-name">
+            <span class="letter">N</span>
+            <span class="letter">Y</span>
+            <span class="letter">K</span>
+            <span class="letter">Å</span>
+            <span class="letter">S</span>
+        </div>
     </footer>
+
+
+
+
+    <script src="/js/index.js" type="module"></script>
+    <script src="/js/utility.js" type="module"></script>
 
 </body>
 
 </html>
+

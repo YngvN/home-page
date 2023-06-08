@@ -1,68 +1,259 @@
 :root {
     --color1: #ffffff;
-    --color1: #000000;
-    --color1: #848484;
-    --color1: #005005;
+    --color2: #1b1b1b;
+    --color3: #848484;
+    --color4: #005005;
+    --transparent: #8b8b8b0f;
+    --switch1: #fff;
+    --switch2: #111;
 }
 
+
 html {
+    transition: background-color .5s ease-in-out;
     color-scheme: light dark;
 }
 
 body {
     font-family: system-ui;
+    height: 100vh;
     margin: 0;
     padding: 0;
-
-}
-
-header {
     display: flex;
     flex-direction: column;
-    position: relative;
+    justify-content: space-between;
+    overflow: hidden;
+
+
 }
 
-main {
+
+header,
+main,
+footer {
     width: min(200ch, 90%);
+    position: relative;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
 }
 
-li {
+footer {
+    position: static;
+}
+
+nav li {
     list-style: none;
+    padding: 1em;
+    width: 100%;
+    transition: margin .2s ease-in-out;
+}
+
+nav li:hover {
+    margin-left: -1em;
+
+}
+
+nav .active a {
     text-decoration: none;
+    color: var(--color3);
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+nav .active {
+    margin-left: -1em;
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+nav {
+    position: absolute;
+    top: 5em;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height .8s ease-in-out;
+    width: max-content;
+
 }
 
-nav {}
+nav.open {
+    max-height: 50em;
+    height: fit-content;
+    border-bottom: 2px solid;
+}
 
 nav ul {
     display: flex;
+    flex-direction: column;
     top: 40vh;
+    width: fit-content;
 
 }
 
 nav a {
-    padding: 1em;
+    text-decoration: none;
+    color: inherit;
+
 }
 
+
 .container-nav-dropdown {
-    display: none;
+    /* display: none; */
+}
+
+
+.page-name {
+    position: absolute;
+    cursor: default;
+    left: 0;
+    top: calc(-350px - 20vw);
+    font-size: calc(1rem + 15vw);
+    color: var(--transparent);
+    z-index: -1;
+}
+
+/* Animation for the hamburger button */
+
+.container-hamburger {
+    position: relative;
+    display: flex;
+    cursor: pointer;
+    width: 50px;
+    margin: 2em;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-hamburger {
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    width: 7px;
+    border: none;
+}
+
+.btn-hamburger,
+.btn-hamburger::before,
+.btn-hamburger::after {
+    transition: width .2s ease-in-out;
+    background-color: var(--color1);
+    filter: contrast(50%);
+    position: absolute;
+    border-radius: 10px;
+    height: 7px;
+
+}
+
+.btn-hamburger::before,
+.btn-hamburger::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+}
+
+.btn-hamburger::before {
+    top: -15px;
+}
+
+.btn-hamburger::after {
+    bottom: -15px;
+}
+
+.container-hamburger:hover .btn-hamburger {
+    width: 40px;
+}
+
+
+.btn-hamburger.active {
+    animation: hamburgerMid .5s ease-in-out forwards;
+    width: 40px;
+}
+
+.btn-hamburger.active::before {
+    animation: hamburgerTop .5s ease-in-out forwards;
+}
+
+.btn-hamburger.active::after {
+    width: 6px;
+    animation: hamburgerBottom .5s ease-in-out forwards;
+}
+
+.btn-hamburger:not(.active) {
+    animation: hamburgerMidReverse .5s ease-in-out forwards;
+}
+
+
+.btn-hamburger:not(.active)::before {
+    animation: hamburgerTopReverse .5s ease-in-out forwards;
+}
+
+.btn-hamburger:not(.active)::after {
+    animation: hamburgerBottomReverse .5s ease-in-out forwards;
+    transition: width .4s ease-in-out;
+}
+
+@keyframes hamburgerMid {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes hamburgerTop {
+    0% {
+        transform: rotate(0deg);
+
+    }
+
+    100% {
+        transform: translateY(15px) rotate(90deg);
+    }
+}
+
+@keyframes hamburgerBottom {
+    0% {
+        transform: rotate(0deg);
+
+    }
+
+    100% {
+        transform: translateY(-15px) translateX(17px);
+    }
+}
+
+@keyframes hamburgerMidReverse {
+    0% {
+        transform: rotate(45deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes hamburgerTopReverse {
+    0% {
+        transform: translateY(15px) rotate(90deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes hamburgerBottomReverse {
+    0% {
+        transform: translateY(-15px) translateX(16px);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 .hide {
@@ -71,24 +262,61 @@ nav a {
 
 /* Switch between light and dark mode */
 .btn-lightdark {
+    right: 0;
     position: absolute;
+    padding: 2em;
+    border: none;
+    background-color: transparent;
+    z-index: 1;
+}
 
+.btn-lightdark:hover .dark {
+    display: block;
+}
+
+.btn-lightdark:hover .light {
+    display: none;
+}
+
+.btn-lightdark .dark {
+    display: none;
 }
 
 .btn-lightdark i {
-    font-size: 2rem;
+    font-size: 3rem;
 }
+
+
 
 .container-name {
     display: flex;
     flex-direction: column;
     text-align: right;
     height: min-content;
+    position: fixed;
+    top: 50%;
+}
+
+
+
+.footer-name {
+    position: absolute;
+    top: calc(0 + 26vw);
+    cursor: default;
+    z-index: -1;
+}
+
+.letter {
+    font-size: calc(.2rem + 25vw);
+    color: var(--transparent);
+    transform-style: preserve-3d;
+    transform-origin: center center;
 }
 
 .hide,
 .name,
-.title {
+.title,
+.footer-name {
     opacity: 0;
     transition: opacity .4s ease-in;
 }
@@ -114,7 +342,7 @@ nav a {
     z-index: 9999;
 }
 
-@keyframes spin {
+@keyframes spinX {
     0% {
         transform: rotateX(0deg);
     }
@@ -124,9 +352,20 @@ nav a {
     }
 }
 
+@keyframes spinY {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
 .loading span {
     font-size: 2rem;
     animation: none;
+    animation-iteration-count: infinite;
     transition: opacity .2s ease-in-out;
     transform-style: preserve-3d;
     transform-origin: center center;
