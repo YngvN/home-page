@@ -2,20 +2,25 @@
     --color1: #ffffff;
     --color2: #1b1b1b;
     --color3: #848484;
-    --color4: #005005;
-    --transparent: #8b8b8b0f;
-    --switch1: #fff;
-    --switch2: #111;
+    --background: #898989;
+    --text: #ffffff;
+    --border: #fff;
+    --transparent: #8b8b8b2e;
+
 }
 
 
 html {
     transition: background-color .5s ease-in-out;
-    color-scheme: light dark;
+    color-scheme: dark;
 }
+
 
 body {
     font-family: system-ui;
+    max-height: 100vh;
+    min-height: 35em;
+    min-width: 10em;
     height: 100vh;
     margin: 0;
     padding: 0;
@@ -23,12 +28,9 @@ body {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
-
-
 }
 
 
-header,
 main,
 footer {
     width: min(200ch, 90%);
@@ -40,53 +42,59 @@ footer {
     justify-content: center;
 }
 
+header {
+    width: min(200ch, 90%);
+    position: relative;
+    margin-inline: auto;
+    display: flex;
+    margin-top: 1em;
+    overflow: visible;
+
+}
+
 footer {
     position: static;
 }
 
-nav li {
-    list-style: none;
-    padding: 1em;
-    width: 100%;
-    transition: margin .2s ease-in-out;
+.menu {
+    display: flex;
+    position: absolute;
+    border-radius: 5px;
+    max-height: 5em;
+    max-width: 5em;
+    transition: .5s;
+    transition: max-width .5s ease-in-out, max-height .5s ease-in-out;
+    overflow: hidden;
 }
 
-nav li:hover {
-    margin-left: -1em;
-
-}
-
-nav .active a {
-    text-decoration: none;
-    color: var(--color3);
-}
-
-nav .active {
-    margin-left: -1em;
+.menu.open,
+.menu:hover {
+    max-width: 100%;
 }
 
 nav {
-    position: absolute;
-    top: 5em;
-    overflow: hidden;
-    max-height: 0;
-    transition: max-height .8s ease-in-out;
-    width: max-content;
+    display: flex;
 
-}
-
-nav.open {
-    max-height: 50em;
-    height: fit-content;
-    border-bottom: 2px solid;
 }
 
 nav ul {
     display: flex;
-    flex-direction: column;
-    top: 40vh;
-    width: fit-content;
+    flex-direction: row;
+    padding: 0;
+    overflow: hidden;
+}
 
+
+
+nav li {
+    color: var(--text);
+    list-style: none;
+    padding: 1em;
+    transition: margin .2s ease-in-out;
+}
+
+nav li:hover {
+    margin-top: -.5em;
 }
 
 nav a {
@@ -95,17 +103,59 @@ nav a {
 
 }
 
+nav .active a {
+    text-decoration: none;
+    color: var(--color3);
+}
+
+
+
 
 .container-nav-dropdown {
     /* display: none; */
 }
 
+@media screen and (max-width: 768px) {
+
+    .menu {
+        flex-direction: column;
+        min-height: 5em;
+        min-width: 5em;
+        transition: min-height .5s ease-in-out, min-height .5s ease-in-out;
+    }
+
+    nav {
+        padding-left: 1em;
+        margin-bottom: -11.5em;
+    }
+
+    .menu.open,
+    .menu:hover {
+        max-width: none;
+        max-height: none;
+        min-width: 10em;
+        min-height: 18em;
+        overflow: visible;
+    }
+
+    nav ul {
+        flex-direction: column;
+
+    }
+
+
+    nav li:hover {
+        margin: auto;
+        margin-left: -.5em;
+    }
+
+}
 
 .page-name {
     position: absolute;
     cursor: default;
     left: 0;
-    top: calc(-350px - 20vw);
+    top: calc(-200px - 20vw);
     font-size: calc(1rem + 15vw);
     color: var(--transparent);
     z-index: -1;
@@ -114,14 +164,15 @@ nav a {
 /* Animation for the hamburger button */
 
 .container-hamburger {
-    position: relative;
     display: flex;
+    min-width: 5em;
+    height: 5em;
+    position: relative;
     cursor: pointer;
-    width: 50px;
-    margin: 2em;
-    height: 50px;
     align-items: center;
     justify-content: center;
+    transition: margin .5s ease-in-out;
+    z-index: 3;
 }
 
 .btn-hamburger {
@@ -131,17 +182,17 @@ nav a {
     padding: 0;
     width: 7px;
     border: none;
+
 }
 
 .btn-hamburger,
 .btn-hamburger::before,
 .btn-hamburger::after {
     transition: width .2s ease-in-out;
-    background-color: var(--color1);
-    filter: contrast(50%);
-    position: absolute;
+    background-color: var(--text);
     border-radius: 10px;
     height: 7px;
+    z-index: 2;
 
 }
 
@@ -161,8 +212,10 @@ nav a {
     bottom: -15px;
 }
 
-.container-hamburger:hover .btn-hamburger {
+.menu:hover .btn-hamburger {
     width: 40px;
+    margin-left: -1em;
+    margin-right: -1em;
 }
 
 
@@ -262,12 +315,13 @@ nav a {
 
 /* Switch between light and dark mode */
 .btn-lightdark {
-    right: 0;
     position: absolute;
-    padding: 2em;
+    right: 0;
+    padding: 1em;
     border: none;
-    background-color: transparent;
+    border-radius: 5px;
     z-index: 1;
+    transition: margin .5s ease-in-out;
 }
 
 .btn-lightdark:hover .dark {
@@ -283,7 +337,18 @@ nav a {
 }
 
 .btn-lightdark i {
-    font-size: 3rem;
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+
+    .menu {
+        margin-left: -.5em;
+    }
+
+    .btn-lightdark {
+        margin-right: -.5em;
+    }
 }
 
 
@@ -378,4 +443,11 @@ nav a {
 
 .loading span:nth-child(2) {
     animation-delay: .5s;
+}
+
+.clickable {
+    color: var(--text);
+    background-color: var(--background);
+    border-radius: 5px;
+    box-shadow: 2px 3px var(--transparent);
 }

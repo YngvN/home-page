@@ -4,7 +4,8 @@ const loadingLetters = loadingIndicator.querySelectorAll("span");
 const lightButton = document.querySelector(".btn-lightdark");
 const html = document.documentElement;
 
-const hamburgerButton = document.querySelector(".btn-hamburger")
+const hamburgerButton = document.querySelector(".btn-hamburger");
+const hamburgerContainer = document.querySelector(".container-hamburger");
 
 
 
@@ -83,7 +84,7 @@ export function displayAll() {
   name.style.opacity = "1";
 
   hiddenObjects.forEach((object) => {
-    object.style.display = "block";
+    object.style.display = "flex";
         setTimeout(() => {
         object.style.opacity = "1";
     }, 1000);
@@ -91,14 +92,31 @@ export function displayAll() {
 }
 
 function showMenu() {
-    const nav = document.querySelector("nav");
-    nav.classList.toggle("open");
-    hamburgerButton.classList.toggle("active");
+  const menu = document.querySelector(".menu");
+  const hamburgerButton = document.querySelector(".btn-hamburger");
+
+  menu.classList.toggle("open");
+  hamburgerButton.classList.toggle("active");
+
+  const closeMenu = function (event) {
+    if (!menu.contains(event.target)) {
+      menu.classList.remove("open");
+      hamburgerButton.classList.remove("active");
+      document.removeEventListener("click", closeMenu);
+    }
+  };
+
+  setTimeout(function () {
+    document.addEventListener("click", closeMenu);
+  }, 0);
 }
+
+
 
 lightButton.addEventListener("click", toggleColorScheme);
 
 hamburgerButton.addEventListener("click", showMenu);
+
 
 
 

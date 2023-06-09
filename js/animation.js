@@ -11,6 +11,6 @@ setInterval(() => {
 
   console.log("Started " + randomLetter.textContent);
 
-  randomLetter.style.animation = `${randomAnimation} 1s linear forwards`;
+  randomLetter.style.animation = `${randomAnimation} 1s forwards`;
 //   randomLetter.style.animationDuration = randomInterval + 'ms';
 }, Math.random() * 1000 + 2000);
