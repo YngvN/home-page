@@ -68,7 +68,9 @@ const body = document.body;
       html.style.backgroundColor = "inherit";
       html.style.colorScheme = "dark";
       html.style.setProperty("--color1-primary", "#000000");
-        html.style.setProperty("--color1-secondary", " #8fff79");
+     html.style.setProperty("--color1-secondary", " #8fff79");
+        html.style.setProperty("--color2-primary", " #ffffff");
+
     html.style.setProperty("--background", "#ffffff");
     }, 400);
   } else {
@@ -80,9 +82,8 @@ const body = document.body;
       html.style.colorScheme = "light";
       html.style.setProperty("--color1-primary", "#ffffff");
         html.style.setProperty("--background", "#000000");
-        html.style.setProperty("--color1-secondary", " #b4fbff");
-
-
+        html.style.setProperty("--color1-secondary", "#b4fbff");
+        html.style.setProperty("--color2-primary", "#000000");
     }, 300);
   }
 }

@@ -18,17 +18,18 @@ html {
 body {
     font-family: system-ui;
     max-height: 100vh;
-    min-height: 35em;
-    min-width: 10em;
     height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     overflow: hidden;
     background-color: var(--background);
     transition: background-color .5s ease-in-out;
+}
+
+img {
+    max-width: 100%;
 }
 
 p,
@@ -52,23 +53,43 @@ footer {
     justify-content: center;
 }
 
+main {
+    height: 90vh;
+}
+
 header {
+    height: 5vh;
     width: min(200ch, 90%);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     position: relative;
     margin-inline: auto;
-    display: flex;
     margin-top: 1em;
     overflow: visible;
 
 }
 
 footer {
+    height: 5vh;
     position: static;
+}
+
+button {
+    transition: background-color .2s ease-in-out;
+    margin: 0;
+    border: none;
+    border-radius: none;
+
+}
+
+button:hover {
+    background-color: var(--color1-secondary);
 }
 
 .menu {
     display: flex;
-    position: absolute;
     border-radius: 5px;
     max-height: 5em;
     max-width: 5em;
@@ -92,15 +113,20 @@ nav ul {
     flex-direction: row;
     padding: 0;
     overflow: hidden;
+    background-color: var(--color2-primary);
+    border-radius: 5px;
+    z-index: 10;
 }
 
 
 
 nav li {
+    background-color: var(--color2-primary);
     color: var(--color1-primary);
     list-style: none;
     padding: 1em;
     transition: margin .2s ease-in-out;
+    z-index: 10;
 }
 
 nav li:hover {
@@ -135,6 +161,8 @@ nav .active a {
     }
 
     nav {
+        position: absolute;
+        top: 3em;
         padding-left: 1em;
         margin-bottom: -11.5em;
     }
@@ -162,11 +190,11 @@ nav .active a {
 }
 
 .page-name {
-    position: absolute;
     cursor: default;
-    left: 0;
-    top: calc(-100px - 20vw);
-    font-size: calc(1rem + 15vw);
+    position: absolute;
+    font-size: 3rem;
+    margin-top: 3em;
+    right: em;
     color: var(--transparent);
     z-index: -1;
 }
@@ -326,8 +354,6 @@ nav .active a {
 
 /* Switch between light and dark mode */
 .btn-lightdark {
-    position: absolute;
-    right: 0;
     padding: 1em;
     border: none;
     border-radius: 5px;
@@ -462,22 +488,146 @@ nav .active a {
 .main-coding {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 
 }
 
 
-.main-coding .child {}
-
-.main-coding .child img {
-    width: 30vw;
+.main-coding .container {
+    display: flex;
+    flex-direction: column;
     margin: 1em;
+    padding: 1em;
+    position: relative;
 }
 
+.list {
+    position: relative;
+    width: 50vw;
+    max-width: 1200px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 
-
-.main-coding .child-2,
-.main-coding .child-3 {
+.list .child {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
     position: absolute;
     opacity: 0;
-    z-index: -2;
+}
+
+
+.main-coding .child img {
+    border-radius: 5px;
+    object-fit: contain;
+    transition: filter .2s ease-in-out;
+    filter: brightness(90%);
+
+}
+
+.main-coding .child img:hover {
+    filter: brightness(100%);
+}
+
+
+
+.list .active {
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+}
+
+.links {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+
+
+
+.btn-selector {
+    width: 100%;
+    padding: 2em;
+    transition: background-color .2s ease-in-out;
+    border: none;
+}
+
+.btn-selector.selected {
+    background-color: var(--color1-secondary);
+}
+
+.btn-site {
+    display: flex;
+    justify-content: center;
+    font-size: .9rem;
+    flex-basis: 50%;
+    border-radius: 0;
+    text-decoration: none;
+    margin: 0;
+    border: none;
+    padding: 1em;
+    background-color: var(--color1-primary);
+    color: var(--color2-primary);
+    transition: background-color .2s ease-in-out;
+}
+
+.btn-site:hover {
+    background-color: var(--color1-secondary);
+}
+
+
+@media screen and (max-width: 1210px) {
+
+    .main-coding {
+        margin-top: 2em;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .main-coding .container {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .btn-selector {
+        width: auto;
+        flex-basis: 34%;
+        min-width: none;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0;
+    }
+
+    .container-buttons {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        min-width: none;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .main-coding .child img {
+        object-fit: cover;
+        transition: filter .2s ease-in-out;
+        filter: brightness(90%);
+        min-width: 100%;
+    }
+
+    .list {
+        width: 100%;
+        height: 70vh;
+        overflow: hidden;
+    }
+
+    .list .child {
+        align-items: center;
+        flex-direction: column-reverse;
+    }
 }
