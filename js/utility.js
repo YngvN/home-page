@@ -1,6 +1,8 @@
 const loadingIndicator = document.querySelector(".loading");
 const loadingLetters = loadingIndicator.querySelectorAll("span");
 
+const root = document.querySelector(":root");
+
 const lightButton = document.querySelector(".btn-lightdark");
 const html = document.documentElement;
 
@@ -56,26 +58,38 @@ export function hideLoadingIndicator() {
 
 function toggleColorScheme() {
   const html = document.documentElement;
+  const colorScheme = getComputedStyle(html).getPropertyValue("color-scheme");
+const body = document.body;
 
-  if (html.style.colorScheme === "light") {
-
-    html.style.backgroundColor = "var(--color2)";
+  if (colorScheme === "light") {
+    console.log("Light mode");
 
     setTimeout(() => {
-        html.style.backgroundColor = "inherit";
-        html.style.colorScheme = "dark";
+      html.style.backgroundColor = "inherit";
+      html.style.colorScheme = "dark";
+      html.style.setProperty("--color1-primary", "#000000");
+        html.style.setProperty("--color1-secondary", " #8fff79");
+    html.style.setProperty("--background", "#ffffff");
     }, 400);
-
   } else {
 
-    html.style.backgroundColor = "var(--color1)";
+    console.log("Dark mode");
 
     setTimeout(() => {
-        html.style.backgroundColor = "inherit";
-        html.style.colorScheme = "light";
+      html.style.backgroundColor = "inherit";
+      html.style.colorScheme = "light";
+      html.style.setProperty("--color1-primary", "#ffffff");
+        html.style.setProperty("--background", "#000000");
+        html.style.setProperty("--color1-secondary", " #b4fbff");
+
+
     }, 300);
   }
 }
+
+window.onload = function () {
+  toggleColorScheme();
+};
 
 export function displayAll() {
   const hiddenObjects = document.querySelectorAll(".hide");
@@ -112,8 +126,10 @@ function showMenu() {
 }
 
 
+lightButton.addEventListener("click", function () {
+  toggleColorScheme();
+});
 
-lightButton.addEventListener("click", toggleColorScheme);
 
 hamburgerButton.addEventListener("click", showMenu);
 

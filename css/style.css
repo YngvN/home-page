@@ -1,10 +1,9 @@
 :root {
-    --color1: #ffffff;
-    --color2: #1b1b1b;
-    --color3: #848484;
-    --background: #898989;
-    --text: #ffffff;
-    --border: #fff;
+    --color1-primary: #ffffff;
+    --color1-secondary: #b4fbff;
+    --color2-primary: #000000;
+    --color2-secondary: #1b1b1b;
+    --background: #000000;
     --transparent: #8b8b8b2e;
 
 }
@@ -28,6 +27,17 @@ body {
     flex-direction: column;
     justify-content: space-between;
     overflow: hidden;
+    background-color: var(--background);
+    transition: background-color .5s ease-in-out;
+}
+
+p,
+a,
+h1,
+h2,
+h3 {
+    color: var(--color1-primary);
+    transition: color .5s ease-in-out;
 }
 
 
@@ -87,7 +97,7 @@ nav ul {
 
 
 nav li {
-    color: var(--text);
+    color: var(--color1-primary);
     list-style: none;
     padding: 1em;
     transition: margin .2s ease-in-out;
@@ -105,7 +115,7 @@ nav a {
 
 nav .active a {
     text-decoration: none;
-    color: var(--color3);
+    color: var(--color1-secondary);
 }
 
 
@@ -155,7 +165,7 @@ nav .active a {
     position: absolute;
     cursor: default;
     left: 0;
-    top: calc(-200px - 20vw);
+    top: calc(-100px - 20vw);
     font-size: calc(1rem + 15vw);
     color: var(--transparent);
     z-index: -1;
@@ -180,7 +190,7 @@ nav .active a {
     cursor: pointer;
     margin: 0;
     padding: 0;
-    width: 7px;
+    width: 4px;
     border: none;
 
 }
@@ -188,16 +198,17 @@ nav .active a {
 .btn-hamburger,
 .btn-hamburger::before,
 .btn-hamburger::after {
-    transition: width .2s ease-in-out;
-    background-color: var(--text);
+    transition: width .2s ease-in-out, background-color .5s ease-in-out;
+    background-color: var(--color1-primary);
     border-radius: 10px;
-    height: 7px;
+    height: 4px;
     z-index: 2;
 
 }
 
 .btn-hamburger::before,
 .btn-hamburger::after {
+    background-color: var(--color1-secondary);
     content: "";
     display: block;
     position: absolute;
@@ -205,11 +216,11 @@ nav .active a {
 }
 
 .btn-hamburger::before {
-    top: -15px;
+    top: -10px;
 }
 
 .btn-hamburger::after {
-    bottom: -15px;
+    bottom: -10px;
 }
 
 .menu:hover .btn-hamburger {
@@ -264,7 +275,7 @@ nav .active a {
     }
 
     100% {
-        transform: translateY(15px) rotate(90deg);
+        transform: translateY(10px) rotate(90deg);
     }
 }
 
@@ -275,7 +286,7 @@ nav .active a {
     }
 
     100% {
-        transform: translateY(-15px) translateX(17px);
+        transform: translateY(-10px) translateX(17px);
     }
 }
 
@@ -291,7 +302,7 @@ nav .active a {
 
 @keyframes hamburgerTopReverse {
     0% {
-        transform: translateY(15px) rotate(90deg);
+        transform: translateY(10px) rotate(90deg);
     }
 
     100% {
@@ -301,7 +312,7 @@ nav .active a {
 
 @keyframes hamburgerBottomReverse {
     0% {
-        transform: translateY(-15px) translateX(16px);
+        transform: translateY(-10px) translateX(16px);
     }
 
     100% {
@@ -322,6 +333,7 @@ nav .active a {
     border-radius: 5px;
     z-index: 1;
     transition: margin .5s ease-in-out;
+    background-color: transparent;
 }
 
 .btn-lightdark:hover .dark {
@@ -338,6 +350,8 @@ nav .active a {
 
 .btn-lightdark i {
     font-size: 2rem;
+    color: var(--color1-primary);
+    background-color: transparent;
 }
 
 @media screen and (max-width: 768px) {
@@ -445,9 +459,25 @@ nav .active a {
     animation-delay: .5s;
 }
 
-.clickable {
-    color: var(--text);
-    background-color: var(--background);
-    border-radius: 5px;
-    box-shadow: 2px 3px var(--transparent);
+.main-coding {
+    display: flex;
+    flex-direction: row;
+
+}
+
+
+.main-coding .child {}
+
+.main-coding .child img {
+    width: 30vw;
+    margin: 1em;
+}
+
+
+
+.main-coding .child-2,
+.main-coding .child-3 {
+    position: absolute;
+    opacity: 0;
+    z-index: -2;
 }
