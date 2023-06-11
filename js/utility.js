@@ -115,10 +115,8 @@ function showMenu() {
   const hamburgerButton = document.querySelector(".btn-hamburger");
 
 
-  nav.classList.toggle("open");
-  hamburgerButton.classList.toggle("active");
-
-
+  nav.classList.add("open");
+  hamburgerButton.classList.add("active");
 
 
   const closeMenu = function (event) {
