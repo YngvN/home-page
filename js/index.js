@@ -5,6 +5,7 @@ const title = document.querySelector(".title");
 const nameContainer = document.querySelector(".container-name");
 
 
+
 function displayName() {
 
     showLoadingIndicator(true);
@@ -20,7 +21,7 @@ function displayName() {
     setTimeout(() => {
         title.style.opacity = "0";
         name.style.opacity = "0";
-    }, 3000);    
+    }, 4000);    
     
     setTimeout(() => {
 

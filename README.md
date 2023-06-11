@@ -10,7 +10,7 @@ My homepage. I'm attempting to go for a more minimalistic look with some fancy a
 
 Examples are:
 
-- My hamburger that I've made myself
+- The hamburger that I've made myself
 - Generally all interactive things
 - The intro when strating the website from the start
 

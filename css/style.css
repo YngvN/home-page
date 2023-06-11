@@ -36,9 +36,11 @@ p,
 a,
 h1,
 h2,
-h3 {
+h3,
+span {
     color: var(--color1-primary);
     transition: color .5s ease-in-out;
+    text-decoration: none;
 }
 
 
@@ -84,29 +86,23 @@ button {
 
 }
 
-button:hover {
-    background-color: var(--color1-secondary);
-}
-
-.menu {
-    display: flex;
-    border-radius: 5px;
-    max-height: 5em;
-    max-width: 5em;
-    transition: .5s;
-    transition: max-width .5s ease-in-out, max-height .5s ease-in-out;
-    overflow: hidden;
-}
-
-.menu.open,
-.menu:hover {
-    max-width: 100%;
-}
 
 nav {
     display: flex;
-
+    position: absolute;
+    top: -.9em;
+    left: 5em;
+    max-width: 0;
+    transition: .5s;
 }
+
+
+nav.open,
+nav:hover {
+    max-width: 100%;
+}
+
+nav {}
 
 nav ul {
     display: flex;
@@ -125,17 +121,17 @@ nav li {
     color: var(--color1-primary);
     list-style: none;
     padding: 1em;
-    transition: margin .2s ease-in-out;
     z-index: 10;
 }
 
-nav li:hover {
-    margin-top: -.5em;
+nav li:hover a {
+    font-size: 1.1rem;
 }
 
 nav a {
     text-decoration: none;
     color: inherit;
+    transition: font-size .2s ease-in-out;
 
 }
 
@@ -153,27 +149,13 @@ nav .active a {
 
 @media screen and (max-width: 768px) {
 
-    .menu {
-        flex-direction: column;
-        min-height: 5em;
-        min-width: 5em;
-        transition: min-height .5s ease-in-out, min-height .5s ease-in-out;
-    }
+
 
     nav {
         position: absolute;
         top: 3em;
-        padding-left: 1em;
+        left: 0;
         margin-bottom: -11.5em;
-    }
-
-    .menu.open,
-    .menu:hover {
-        max-width: none;
-        max-height: none;
-        min-width: 10em;
-        min-height: 18em;
-        overflow: visible;
     }
 
     nav ul {
@@ -182,7 +164,7 @@ nav .active a {
     }
 
 
-    nav li:hover {
+    nav li:hover a {
         margin: auto;
         margin-left: -.5em;
     }
@@ -194,7 +176,7 @@ nav .active a {
     position: absolute;
     font-size: 3rem;
     margin-top: 3em;
-    right: em;
+    right: 1em;
     color: var(--transparent);
     z-index: -1;
 }
@@ -210,7 +192,10 @@ nav .active a {
     align-items: center;
     justify-content: center;
     transition: margin .5s ease-in-out;
-    z-index: 3;
+}
+
+.container-hamburger:hover nav {
+    max-width: 100%;
 }
 
 .btn-hamburger {
@@ -220,6 +205,7 @@ nav .active a {
     padding: 0;
     width: 4px;
     border: none;
+    z-index: -1;
 
 }
 
@@ -230,7 +216,6 @@ nav .active a {
     background-color: var(--color1-primary);
     border-radius: 10px;
     height: 4px;
-    z-index: 2;
 
 }
 
@@ -251,11 +236,7 @@ nav .active a {
     bottom: -10px;
 }
 
-.menu:hover .btn-hamburger {
-    width: 40px;
-    margin-left: -1em;
-    margin-right: -1em;
-}
+
 
 
 .btn-hamburger.active {
@@ -268,7 +249,7 @@ nav .active a {
 }
 
 .btn-hamburger.active::after {
-    width: 6px;
+    width: 4px;
     animation: hamburgerBottom .5s ease-in-out forwards;
 }
 
@@ -314,7 +295,7 @@ nav .active a {
     }
 
     100% {
-        transform: translateY(-10px) translateX(17px);
+        transform: translateY(-10px) translateX(18px);
     }
 }
 
@@ -441,7 +422,7 @@ nav .active a {
     width: 5em;
     transition: .5s ease-in-out;
     transform: translate(-50%, -50%);
-    border: 2px solid;
+    border: 2px solid var(--color1-primary);
     padding: 1em;
     border-radius: 5px;
     z-index: 9999;
@@ -630,4 +611,40 @@ nav .active a {
         align-items: center;
         flex-direction: column-reverse;
     }
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    font-size: 3rem;
+    bottom: 3em;
+    right: 0;
+}
+
+.socials a:hover {
+    color: var(--color1-secondary);
+}
+
+.nav-index {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.nav-index a {
+    display: flex;
+    cursor: pointer;
+    background-color: var(--color1-primary);
+    color: var(--color2-primary);
+    padding: 1em;
+    justify-content: center;
+    z-index: 3;
+    transition: .2s;
+}
+
+.nav-index a:hover {
+    background-color: var(--color1-secondary);
+
 }

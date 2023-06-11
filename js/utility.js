@@ -8,6 +8,8 @@ const html = document.documentElement;
 
 const hamburgerButton = document.querySelector(".btn-hamburger");
 const hamburgerContainer = document.querySelector(".container-hamburger");
+const nav = document.querySelector("nav");
+
 
 
 
@@ -32,6 +34,7 @@ export function showLoadingIndicator(doneLoading) {
         loadingLetters[index].style.animation = "none";
         spinLetters(index + 1);
       }, 1000); 
+      
     }
   }
   spinLetters(0);
@@ -53,6 +56,7 @@ export function hideLoadingIndicator() {
     setTimeout(() => {
         loadingIndicator.style.display = "none";
     }, 3000); 
+
 }
 
 
@@ -107,15 +111,19 @@ export function displayAll() {
 }
 
 function showMenu() {
-  const menu = document.querySelector(".menu");
+  console.log("Hamburger clicked");
   const hamburgerButton = document.querySelector(".btn-hamburger");
 
-  menu.classList.toggle("open");
+
+  nav.classList.toggle("open");
   hamburgerButton.classList.toggle("active");
 
+
+
+
   const closeMenu = function (event) {
-    if (!menu.contains(event.target)) {
-      menu.classList.remove("open");
+    if (!nav.contains(event.target)) {
+      nav.classList.remove("open");
       hamburgerButton.classList.remove("active");
       document.removeEventListener("click", closeMenu);
     }
@@ -133,6 +141,9 @@ lightButton.addEventListener("click", function () {
 
 
 hamburgerButton.addEventListener("click", showMenu);
+hamburgerContainer.addEventListener("mouseover", showMenu);
+hamburgerContainer.addEventListener("click", showMenu);
+
 
 
 
