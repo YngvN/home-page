@@ -1,6 +1,6 @@
 # My homepage
 
-![image](https://user-images.githubusercontent.com/52622303/164316813-4b12d99f-aeb7-4069-85cf-e72b3a50ac99.png)
+![Image of a page from my website](img-homepage.png)
 
 This is my own homepage where I display some of the stuff I've learned so far
 
