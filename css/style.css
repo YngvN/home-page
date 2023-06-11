@@ -387,7 +387,7 @@ nav .active a {
 .footer-name {
     align-self: center;
     position: absolute;
-    bottom: 0;
+    bottom: -50px;
     cursor: default;
     z-index: -1;
 }
@@ -684,6 +684,7 @@ nav .active a {
 .container-name-resume .child {
     position: relative;
     justify-content: center;
+    margin: 1em;
 }
 
 .container-programming {

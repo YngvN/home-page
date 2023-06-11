@@ -66,7 +66,6 @@ function toggleColorScheme() {
 const body = document.body;
 
   if (colorScheme === "light") {
-    console.log("Light mode");
 
     setTimeout(() => {
       html.style.backgroundColor = "inherit";
@@ -79,7 +78,6 @@ const body = document.body;
     }, 400);
   } else {
 
-    console.log("Dark mode");
 
     setTimeout(() => {
       html.style.backgroundColor = "inherit";
